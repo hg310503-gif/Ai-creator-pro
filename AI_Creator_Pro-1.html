@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Creator Pro</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1020;color:#fff}
+.container{max-width:900px;margin:auto;padding:24px}.hero{text-align:center;padding:30px 10px}
+.logo{font-size:38px;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00d4ff);-webkit-background-clip:text;color:transparent}
+.sub{color:#aeb7d0}.card{background:#141b31;border:1px solid #293352;border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 10px 30px #0003}
+label{display:block;margin:8px 0;font-weight:700}textarea,input,select{width:100%;padding:14px;border-radius:12px;border:1px solid #35415f;background:#0e1528;color:#fff;font-size:16px}
+textarea{min-height:120px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{border:0;border-radius:12px;padding:14px 18px;font-weight:800;font-size:16px;cursor:pointer;background:linear-gradient(90deg,#7c5cff,#00aeea);color:white;margin-top:14px;width:100%}
+button.secondary{background:#26314d}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.out{white-space:pre-wrap;color:#dce4ff;line-height:1.65;background:#0d1426;border-radius:12px;padding:14px;min-height:110px}
+.small{font-size:13px;color:#8793b2}.status{margin-top:10px;color:#74e0a1}
+@media(max-width:650px){.row,.grid{grid-template-columns:1fr}.container{padding:14px}.logo{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="logo">🤖 AI Creator Pro</div>
+    <div class="sub">Story • Voice Script • Video Prompt • YouTube SEO</div>
+  </div>
+
+  <div class="card">
+    <label>अपना विषय लिखें</label>
+    <textarea id="topic" placeholder="उदाहरण: समुद्र मंथन की कहानी"></textarea>
+    <div class="row">
+      <div>
+        <label>भाषा</label>
+        <select id="lang"><option>हिंदी</option><option>English</option><option>Hinglish</option></select>
+      </div>
+      <div>
+        <label>वीडियो अवधि</label>
+        <select id="duration"><option>60 सेकंड</option><option>2 मिनट</option><option>3 मिनट</option><option>4 मिनट</option></select>
+      </div>
+    </div>
+    <button onclick="generate()">✨ Generate Content</button>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="grid">
+    <div class="card"><h3>✍️ Story</h3><div id="story" class="out"></div></div>
+    <div class="card"><h3>🎙️ Voice Script</h3><div id="voice" class="out"></div></div>
+    <div class="card"><h3>🎬 Video Prompt</h3><div id="video" class="out"></div></div>
+    <div class="card"><h3>🖼️ Thumbnail Prompt</h3><div id="thumb" class="out"></div></div>
+    <div class="card"><h3>📺 YouTube SEO</h3><div id="seo" class="out"></div></div>
+    <div class="card"><h3>📱 Facebook Caption</h3><div id="fb" class="out"></div></div>
+  </div>
+</div>
+
+<script>
+function generate(){
+ const topic=document.getElementById('topic').value.trim();
+ const lang=document.getElementById('lang').value;
+ const duration=document.getElementById('duration').value;
+ if(!topic){alert('पहले विषय लिखें।');return}
+ document.getElementById('status').textContent='Demo content तैयार किया जा रहा है...';
+ document.getElementById('story').textContent=`${topic} — यह आपके AI Creator Pro का डेमो आउटपुट है।\\n\\nअसली AI जोड़ने पर इसी विषय पर पूरी कहानी अपने आप तैयार होगी।`;
+ document.getElementById('voice').textContent=`[भावनात्मक शुरुआत] आज हम जानेंगे ${topic} की अद्भुत कहानी...\\n\\n[गंभीर आवाज] कहानी का पूरा Voice Script यहाँ AI द्वारा तैयार होगा।`;
+ document.getElementById('video').textContent=`Cinematic 4K scene based on: ${topic}. Consistent characters, dramatic lighting, detailed environment, smooth camera movement, realistic expressions, vertical 9:16, ${duration}.`;
+ document.getElementById('thumb').textContent=`Create a highly clickable YouTube thumbnail for "${topic}", cinematic divine/dramatic look, expressive characters, high contrast, 4K, 16:9, space for bold Hindi title.`;
+ document.getElementById('seo').textContent=`Title: ${topic} | अद्भुत कहानी\\nDescription: ${topic} की पूरी कहानी आसान भाषा में।\\nHashtags: #${topic.replace(/\\s+/g,'')} #HindiStory #AI #YouTube`;
+ document.getElementById('fb').textContent=`🔥 ${topic} की यह कहानी जरूर देखें!\\n\\nआपको कहानी कैसी लगी? कमेंट में बताएं।\\n#HindiStory #ViralVideo #FacebookReels`;
+ document.getElementById('status').textContent='✅ Demo तैयार है।';
+}
+</script>
+</body>
+</html>
